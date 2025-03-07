@@ -9,6 +9,8 @@ const app=express()
 app.use(express.json())
 const url=process.env.MONGO_URL
 console.log(url)
+const Port=process.env.Port
+console.log(Port)
 app.use('/user',userRouter)
 app.use('/',CategoryRouter)
 app.use('/',taskRouter)
@@ -20,7 +22,7 @@ const connectdb=async()=>{
         console.log('error')
     }
 }
-app.listen(3000,()=>{
+app.listen(Port,()=>{
     connectdb()
     console.log('server is connected')
 })
